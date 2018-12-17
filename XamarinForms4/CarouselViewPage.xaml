@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinForms4.CarouselViewPage"
+             xmlns:vm="clr-namespace:XamarinForms4.ViewModels"
+             Title="CarouselView">
+    <ContentPage.BindingContext>
+        <vm:UserListViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid>
+        <CarouselView ItemsSource="{Binding Users}"
+                      HeightRequest="170"
+                      VerticalOptions="Center">
+            
+            <CarouselView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 SnapPointsType="Mandatory"
+                                 SnapPointsAlignment="Start"/>
+            </CarouselView.ItemsLayout>
+            
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray"
+                           CornerRadius="3"
+                           HasShadow="False"
+                           Margin="5"
+                           Padding="10">
+                        <Grid HeightRequest="70">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Source="{Binding Picture}"
+                                   Aspect="Fill" />
+                            <StackLayout Grid.Column="1">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Email}"
+                                       LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Phone}"
+                                       LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        
+        <ActivityIndicator HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}" />
+    </Grid>
+    
+</ContentPage>

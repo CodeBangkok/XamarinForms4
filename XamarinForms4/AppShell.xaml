@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="XamarinForms4.AppShell"
+       xmlns:local="clr-namespace:XamarinForms4"
+       RouteScheme="app"
+       RouteHost="codebangkok.com"
+       Route="bond">
+    
+    <!-- app://codebangkok.com/bond/home/a/mainpage -->
+    <!-- app://codebangkok.com/bond/home/a/listview -->
+    <ShellItem Title="HomeItem"
+               Route="home">
+        
+        <ShellSection Title="HomeSection"
+                      Route="a"
+                      Icon="person">
+            <ShellContent Title="MainPage" Route="mainpage">
+                <local:MainPage/>
+            </ShellContent>
+            <ShellContent Title="ListView" Route="listview">
+                <local:ListViewPage/>
+            </ShellContent>
+        </ShellSection>
+        
+        <!-- app://codebangkok.com/bond/home/b/collectionview -->
+        <ShellSection Title="CustomerSection"
+                      Route="b"
+                      Icon="person">
+            <ShellContent Title="CollectionView" Route="collectionview">
+                <local:CollectionViewPage/>
+            </ShellContent>
+        </ShellSection>
+        
+    </ShellItem>
+    <ShellItem Title="ProfileItem"
+               Route="profile">
+        
+    </ShellItem>
+</Shell>

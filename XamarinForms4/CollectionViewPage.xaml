@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinForms4.CollectionViewPage"
+             xmlns:vm="clr-namespace:XamarinForms4.ViewModels"
+             Title="CollectionView">
+    
+    <ContentPage.BindingContext>
+        <vm:UserListViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid>
+        <CollectionView ItemsSource="{Binding Users}">
+            
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"/>
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray"
+                           CornerRadius="3"
+                           HasShadow="False"
+                           Margin="5"
+                           Padding="10">
+                        <Grid WidthRequest="170"
+                              HeightRequest="70">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Source="{Binding Picture}"
+                                   Aspect="Fill" />
+                            <StackLayout Grid.Column="1">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Email}"
+                                       LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Phone}"
+                                       LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ActivityIndicator HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}" />
+    </Grid>    
+</ContentPage>

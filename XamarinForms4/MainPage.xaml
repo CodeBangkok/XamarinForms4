@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinForms4"
+             x:Class="XamarinForms4.MainPage"
+             Title="MainPage">
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="Center"
+                 Margin="30">
+        <Button Text="ListView"
+                BackgroundColor="Silver"
+                x:Name="listviewButton"/>
+        <Button Text="CollectionView"
+                BackgroundColor="Silver"
+                x:Name="collectionviewButton"/>
+    </StackLayout>
+</ContentPage>
